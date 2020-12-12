@@ -8,10 +8,12 @@ color: rgb(15, 15, 15);
 .col-md-9{
 background-color: rgb(11, 122, 219);
 color: white;
+text-align: right
 }
 
 .col-md-3{
 background-color: rgba(148, 9, 9, 0.514);
 color:white;
+text-align: right;
 }
 
