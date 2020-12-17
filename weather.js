@@ -1,7 +1,6 @@
-  const APIKey ="ac42371c43ac990da2890a1cf869a51b"
+  const apiKey = "ac42371c43ac990da2890a1cf869a51b"
   var cityN= $("#searchB").val()
-  var QueryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "q="+cityN+"&appid=" + APIKey;
+  var QueryURL = "https://api.openweathermap.org/data/2.5/weather?"+"q="+cityN+"&appid="+ apiKey;
 
     let searchbtn =$(".searchbtn")
     
@@ -11,7 +10,7 @@
     $("#WForecastH5").addClass("show")
 
   
-
+    var QueryURL = "https://api.openweathermap.org/data/2.5/weather?"+"q="+cityN+"&appid="+ apiKey;
     $.ajax({
       
       url: QueryURL,
