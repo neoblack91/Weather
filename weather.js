@@ -2,10 +2,7 @@
 
   // let Date =  newDate()
 
- 
-  
-
-    let searchbtn =$(".searchbtn")
+    // let searchbtn =$(".searchbtn")
     
   $(".searchbtn").on('click',function(event){
       event.preventDefault();
@@ -36,14 +33,14 @@
     function listcity() {
     console.log ("hello from listcity")
     let listR =$("<li>").addClass("list-group-item").text(cityN)
-    $(".list").append(listR)
+    $("#list").append(listR)
    }
 
    function getCurrentConditions(response) {
     let tempD =(response.main.temp - 273.15)* 1.80 + 32
     tempD= Math.floor(tempD)
     console.log ("hello from getcurrentconditions")
-    $(".weatherCard").empty()
+    $("#today").empty()
 
     const card = $("<div>").addClass("card")
     const cardB = $("<div>").addClass("card-body")
@@ -58,7 +55,7 @@
     cityN.append(cityD, image)
     cardB.append(sCity, Temperture, humidity, wind)
     card.append(cardB)
-    $(".weatherCard").append(card)
+    $("#today").append(card)
 
    }
    function getCurrentForecast (){
@@ -67,7 +64,7 @@
           method: "GET",
         }).then(function(response) {
           console.log (response)
-           $("#WForecast").empty()
+           $("#forecast").empty()
 
            let results = response.listR
           console.log(results)
@@ -82,7 +79,7 @@
             let temp =(results[r].main.temp- 273.15) * 1.80 +32
             let tempD =Math.floor(temp)
              const card = $("<div>").addClass("card-body");
-             const cardB = $("<div>").addClass("card-body p-3 WForecastBody")
+             const cardB = $("<div>").addClass("card-body p-3 forecastBody")
              const cityD = $("<h4>").addClass("card-title").text(Date.toLocaleDateString('en-US'));
              const Temperature = $("<p>").addClass("card-text forecastTemp").text("Temperature: " + tempF + " °F");
              const humidity = $("<p>").addClass("card-text forecastHumidity").text("Humidity: " + results[i].main.humidity + "%");
@@ -91,7 +88,7 @@
 
             cardB.append(cityD, image, Temperature, humidity);
             card.append(cardB);
-            $("#WForecast").append(card);
+            $("#forecast").append(card);
 
             }
           }
@@ -100,7 +97,6 @@
 
    }
   
-
     
 
   
