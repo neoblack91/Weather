@@ -1,9 +1,10 @@
   const apiKey = "ac42371c43ac990da2890a1cf869a51b"
 
-  // let Date =  newDate()
+  let Date = luxon.DateTime.local().toLocaleDateString({hour:'2-digit'})
 
-    // let searchbtn =$(".searchbtn")
-    
+  let searchbtn =$(".searchbtn")
+  
+
   $(".searchbtn").on('click',function(event){
       event.preventDefault();
     // alert("yay it works")
@@ -12,6 +13,7 @@
   
     var QueryURL = "https://api.openweathermap.org/data/2.5/weather?"+"q="+cityN+"&appid="+ apiKey;
     console.log(QueryURL)
+
     $.ajax({
       url: QueryURL,
       method: "GET",
@@ -21,7 +23,7 @@
       let tempD =(response.main.temp - 273.15)* 1.80 + 32
         console.log (Math.floor(tempD))
         console.log(response.wind.speed)
-        getCurrentConditions(response)
+        getCurrentConditions(cityN,response)
         getCurrentForecast(response)
         listcity() 
       console.log(cityN)
@@ -36,7 +38,8 @@
     $("#list").append(listR)
    }
 
-   function getCurrentConditions(response) {
+   function getCurrentConditions(cityN, response) {
+
     let tempD =(response.main.temp - 273.15)* 1.80 + 32
     tempD= Math.floor(tempD)
     console.log ("hello from getcurrentconditions")

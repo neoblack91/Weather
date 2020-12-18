@@ -15,3 +15,10 @@ text-align: right
 text-align: left;
 }
 
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
