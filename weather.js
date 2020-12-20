@@ -1,10 +1,11 @@
-  const apiKey = "ac42371c43ac990da2890a1cf869a51b"
-
-  let Date = luxon.DateTime.local().toLocaleDateString({hour:'2-digit'})
-
-  let searchbtn =$(".searchbtn")
+var apiKey = "ac42371c43ac990da2890a1cf869a51b"
+let date = luxon.DateTime.local()
   
-
+// console.log(date.c)
+// console.log(date.c[1])
+  let searchbtn =$(".searchbtn")
+  var cityN= $("#searchB").val()
+  
   $(".searchbtn").on('click',function(event){
       event.preventDefault();
     // alert("yay it works")
@@ -24,14 +25,14 @@
         console.log (Math.floor(tempD))
         console.log(response.wind.speed)
         getCurrentConditions(cityN,response)
-        getCurrentForecast(response)
+        // getCurrentForecast(cityN,response)
         listcity() 
       console.log(cityN)
       
     });
 
  })
- // calculate the response
+ // list of cities
     function listcity() {
     console.log ("hello from listcity")
     let listR =$("<li>").addClass("list-group-item").text(cityN)
@@ -45,63 +46,70 @@
     console.log ("hello from getcurrentconditions")
     $("#today").empty()
 
-    const card = $("<div>").addClass("card")
-    const cardB = $("<div>").addClass("card-body")
-    const sCity = $("<h4>").addClass("card-title").text(response.name)
-    const cityD = $("<h4>").addClass("card-title").text(Date.tolocaleDateString('en-US'))
-    const Temperture = $("<p>").addClass("card-text current-temp").text("temperature:"+tempD+ "°F")
-    const humidity = $("<p>").addClass("card-text current-humidity").text("humidity:"+response.main.humidity+ "%")
-    const wind = $("<p>").addClass("card-text current-wind").text("Wind Speed:"+response.wind.speed+ "MPH")
-    const image = $("<img>").attr("src","https://openweathermap.org/img/w/"+ response.weather[0].icon+"png")
-
+    var sCity = $("<h4>").addClass("card-title").text(response.name)
+    var cityD = $("<h4>").addClass("card-title").text(date.c.month)
+    var Temperture = $("<p>").addClass("card-text current-temp").text("temperature:"+tempD+ "°F")
+    var humidity = $("<p>").addClass("card-text current-humidity").text("humidity:"+response.main.humidity+ "%")
+    var wind = $("<p>").addClass("card-text current-wind").text("Wind Speed:"+response.wind.speed+ "MPH")
+    var image = $("<img>").attr("src","https://openweathermap.org/img/w/"+ response.weather[0].icon+".png")
+    var lat = $("<p>").addClass("card-text current-Latitude").text("Latitude:"+ response.coord.lat ) 
+    var lon = $("<p>").addClass("card-text current-Longitude").text("Longitude:"+ response.coord.lon ) 
     //add to page
-    cityN.append(cityD, image)
-    cardB.append(sCity, Temperture, humidity, wind)
-    card.append(cardB)
-    $("#today").append(card)
+    $("#today").append(sCity,cityD, image, Temperture, humidity, wind,lat,lon)
 
-   }
-   function getCurrentForecast (){
-      $.ajax({
-          url: QueryURL,
-          method: "GET",
-        }).then(function(response) {
-          console.log (response)
-           $("#forecast").empty()
+        }
+        
+        // var queryFC5 =
+        // "https://api.openweathermap.org/data/2.5/onecall?" +
+        // "lat=" +
+        // lat +
+        // "&lon=" +
+        // lon +
+        // "&units=imperial&exclude=current,minutely,hourly,alerts" +
+        // "&appid=" +
+        // apiKey;
+        //  $.ajax({
+        //   url: queryFC5,
+        //   method: "GET",
+        // }).then(function(response) {
+        // var lat = response.coord.lat;
+        // var lon = response.coord.lon;
 
-           let results = response.listR
-          console.log(results)
+      // })
+      // var queryFC5 ="api.openweathermap.org/data/2.5/forecast?" +"q=" + cityN +"&appid="+ apiKey
+      // $.ajax({
+      //     url: queryFC5,
+      //     method: "GET",
+      //   }).then(function(response) {
+      //   getCurrentForecast(cityN,response)
+      // console.log (queryFC5)
+      // })
 
-          for (let r =0; r< results.length; r++){
+  //  function getCurrentForecast(cityN,response){
 
-            let day = number(results[r].dt_txt.split('-')[2].split(' ')[0])
-            let hour = results[r].dt_txt.split('-')[2].split(' ')[1]
-
-            if(results[r].dt_txt.index0f("12:00")!== -1){
-
-            let temp =(results[r].main.temp- 273.15) * 1.80 +32
-            let tempD =Math.floor(temp)
-             const card = $("<div>").addClass("card-body");
-             const cardB = $("<div>").addClass("card-body p-3 forecastBody")
-             const cityD = $("<h4>").addClass("card-title").text(Date.toLocaleDateString('en-US'));
-             const Temperature = $("<p>").addClass("card-text forecastTemp").text("Temperature: " + tempF + " °F");
-             const humidity = $("<p>").addClass("card-text forecastHumidity").text("Humidity: " + results[i].main.humidity + "%");
-
-             const image = $("<img>").attr("src", "https://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png")
-
-            cardB.append(cityD, image, Temperature, humidity);
-            card.append(cardB);
-            $("#forecast").append(card);
-
-            }
-          }
-
-        });
-
-   }
-  
+  //   let tempD =(response.main.temp - 273.15)* 1.80 + 32
+  //   tempD= Math.floor(tempD)
     
+  //   $("WForecastH5").empty()
 
+  //   var sCity = $("<h4>").addClass("card-title").text(response.name)
+  //   var cityD = $("<h4>").addClass("card-title").text(date.c.month)
+  //   var Temperture = $("<p>").addClass("card-text current-temp").text("temperature:"+tempD+ "°F")
+  //   var humidity = $("<p>").addClass("card-text current-humidity").text("humidity:"+response.main.humidity+ "%")
+  //   var wind = $("<p>").addClass("card-text current-wind").text("Wind Speed:"+response.wind.speed+ "MPH")
+  //   var image = $("<img>").attr("src","https://openweathermap.org/img/w/"+ response.weather[0].icon+".png")
+  //   var lat = $("<p>").addClass("card-text current-Latitude").text("Latitude:"+ response.coord.lat ) 
+  //   var lon = $("<p>").addClass("card-text current-Longitude").text("Longitude:"+ response.coord.lon ) 
+  //   //add to page
+  //   $("WForecastH5").append(sCity,cityD, image, Temperture, humidity, wind,lat,lon)
+
+  //   for (r=0; r < WForecastH5.length; r++){
+
+  //     let r = (WForecastH5 + 5);
+      
+  //   }
+
+
+  // }    
   
-
   
