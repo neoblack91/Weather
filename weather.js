@@ -59,57 +59,39 @@ let date = luxon.DateTime.local()
 
         }
         
-        // var queryFC5 =
-        // "https://api.openweathermap.org/data/2.5/onecall?" +
-        // "lat=" +
-        // lat +
-        // "&lon=" +
-        // lon +
-        // "&units=imperial&exclude=current,minutely,hourly,alerts" +
-        // "&appid=" +
-        // apiKey;
-        //  $.ajax({
-        //   url: queryFC5,
-        //   method: "GET",
-        // }).then(function(response) {
-        // var lat = response.coord.lat;
-        // var lon = response.coord.lon;
+       
+   function getCurrentForecast(cityN,response){
+var queryFC5 ="https://api.openweathermap.org/data/2.5/forecast?q=" + cityN + apiKey;
 
-      // })
-      // var queryFC5 ="api.openweathermap.org/data/2.5/forecast?" +"q=" + cityN +"&appid="+ apiKey
-      // $.ajax({
-      //     url: queryFC5,
-      //     method: "GET",
-      //   }).then(function(response) {
-      //   getCurrentForecast(cityN,response)
-      // console.log (queryFC5)
-      // })
+          $.ajax({
+                url: queryFC5,
+                method: "GET",
+              }).then(function(response) {
+              var lat = response.coord.lat;
+              var lon = response.coord.lon;
+               
+            })
+            
+    let tempD =(response.main.temp - 273.15)* 1.80 + 32
+    tempD= Math.floor(tempD)
+    console.log(queryFC5)
+    $("Forecast").empty()
 
-  //  function getCurrentForecast(cityN,response){
+    var sCity = $("<h4>").addClass("card-title").text(response.name)
+    var cityD = $("<h4>").addClass("card-title").text(date.c.month)
+    var Temperture = $("<p>").addClass("card-text current-temp").text("temperature:"+tempD+ "°F")
+    var humidity = $("<p>").addClass("card-text current-humidity").text("humidity:"+response.main.humidity+ "%")
+    var wind = $("<p>").addClass("card-text current-wind").text("Wind Speed:"+response.wind.speed+ "MPH")
+    var image = $("<img>").attr("src","https://openweathermap.org/img/w/"+ response.weather[0].icon+".png")
+    var lat = $("<p>").addClass("card-text current-Latitude").text("Latitude:"+ response.coord.lat ) 
+    var lon = $("<p>").addClass("card-text current-Longitude").text("Longitude:"+ response.coord.lon ) 
+    //add to page
+    $("Forecast").append(sCity,cityD, image, Temperture, humidity, wind,lat,lon)
 
-  //   let tempD =(response.main.temp - 273.15)* 1.80 + 32
-  //   tempD= Math.floor(tempD)
-    
-  //   $("WForecastH5").empty()
+    var cityD = new Date(date);
+    var repeats = (new Date(date)).setDate(date.getDate() + (i*7))
+   
 
-  //   var sCity = $("<h4>").addClass("card-title").text(response.name)
-  //   var cityD = $("<h4>").addClass("card-title").text(date.c.month)
-  //   var Temperture = $("<p>").addClass("card-text current-temp").text("temperature:"+tempD+ "°F")
-  //   var humidity = $("<p>").addClass("card-text current-humidity").text("humidity:"+response.main.humidity+ "%")
-  //   var wind = $("<p>").addClass("card-text current-wind").text("Wind Speed:"+response.wind.speed+ "MPH")
-  //   var image = $("<img>").attr("src","https://openweathermap.org/img/w/"+ response.weather[0].icon+".png")
-  //   var lat = $("<p>").addClass("card-text current-Latitude").text("Latitude:"+ response.coord.lat ) 
-  //   var lon = $("<p>").addClass("card-text current-Longitude").text("Longitude:"+ response.coord.lon ) 
-  //   //add to page
-  //   $("WForecastH5").append(sCity,cityD, image, Temperture, humidity, wind,lat,lon)
-
-  //   for (r=0; r < WForecastH5.length; r++){
-
-  //     let r = (WForecastH5 + 5);
-      
-  //   }
-
-
-  // }    
+  }    
   
   
