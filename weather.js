@@ -20,14 +20,13 @@ let date = luxon.DateTime.local()
       method: "GET",
     }).then(function(response) {
       // Display response in the console log
-      console.log(response)
+      
       let tempD =(response.main.temp - 273.15)* 1.80 + 32
-        console.log (Math.floor(tempD))
-        console.log(response.wind.speed)
+        
         getCurrentConditions(cityN,response)
-        // getCurrentForecast(cityN,response)
+        getCurrentForecast(cityN,response)
         listcity() 
-      console.log(cityN)
+      
       
     });
 
@@ -47,7 +46,7 @@ let date = luxon.DateTime.local()
     $("#today").empty()
 
     var sCity = $("<h4>").addClass("card-title").text(response.name)
-    var cityD = $("<h4>").addClass("card-title").text(date.c.month)
+    var cityD = $("<h4>").addClass("card-title").text(luxon.DateTime.local())
     var Temperture = $("<p>").addClass("card-text current-temp").text("temperature:"+tempD+ "°F")
     var humidity = $("<p>").addClass("card-text current-humidity").text("humidity:"+response.main.humidity+ "%")
     var wind = $("<p>").addClass("card-text current-wind").text("Wind Speed:"+response.wind.speed+ "MPH")
@@ -61,36 +60,39 @@ let date = luxon.DateTime.local()
         
        
    function getCurrentForecast(cityN,response){
-var queryFC5 ="https://api.openweathermap.org/data/2.5/forecast?q=" + cityN + apiKey;
+var queryFC5 ="https://api.openweathermap.org/data/2.5/forecast?q=" + cityN + "&appid=" + apiKey;
 
           $.ajax({
                 url: queryFC5,
                 method: "GET",
               }).then(function(response) {
-              var lat = response.coord.lat;
-              var lon = response.coord.lon;
-               
+              
+              
             })
-            
-    let tempD =(response.main.temp - 273.15)* 1.80 + 32
-    tempD= Math.floor(tempD)
-    console.log(queryFC5)
-    $("Forecast").empty()
+        var results =response
+        for (r=0; r<5, r++;) {
+            var result = forecast = r 
 
-    var sCity = $("<h4>").addClass("card-title").text(response.name)
-    var cityD = $("<h4>").addClass("card-title").text(date.c.month)
-    var Temperture = $("<p>").addClass("card-text current-temp").text("temperature:"+tempD+ "°F")
-    var humidity = $("<p>").addClass("card-text current-humidity").text("humidity:"+response.main.humidity+ "%")
-    var wind = $("<p>").addClass("card-text current-wind").text("Wind Speed:"+response.wind.speed+ "MPH")
-    var image = $("<img>").attr("src","https://openweathermap.org/img/w/"+ response.weather[0].icon+".png")
-    var lat = $("<p>").addClass("card-text current-Latitude").text("Latitude:"+ response.coord.lat ) 
-    var lon = $("<p>").addClass("card-text current-Longitude").text("Longitude:"+ response.coord.lon ) 
-    //add to page
-    $("Forecast").append(sCity,cityD, image, Temperture, humidity, wind,lat,lon)
+             let tempD =(response.main.temp - 273.15)* 1.80 + 32
+            tempD= Math.floor(tempD)
+            console.log(queryFC5)
+            $("#forecast").empty()
 
-    var cityD = new Date(date);
-    var repeats = (new Date(date)).setDate(date.getDate() + (i*7))
+              var sCity = $("<h4>").addClass("card-title").text(response.name)
+              var cityD = $("<h4>").addClass("card-title").text(date.c.day)
+              var Temperture = $("<p>").addClass("card-text current-temp").text("temperature:"+tempD+ "°F")
+              var humidity = $("<p>").addClass("card-text current-humidity").text("humidity:"+response.main.humidity+ "%")
+              var wind = $("<p>").addClass("card-text current-wind").text("Wind Speed:"+response.wind.speed+ "MPH")
+              var image = $("<img>").attr("src","https://openweathermap.org/img/w/"+ response.weather[0].icon+".png")
+              var lat = $("<p>").addClass("card-text current-Latitude").text("Latitude:"+ response.coord.lat ) 
+              var lon = $("<p>").addClass("card-text current-Longitude").text("Longitude:"+ response.coord.lon ) 
+              //add to page
+              $("#forecast").append(sCity,cityD, image, Temperture, humidity, wind,lat,lon)
+        }
+       
    
+
+    
 
   }    
   
