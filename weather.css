@@ -1,24 +1,95 @@
-.jumbotron{
-background-color: rgb(177, 14, 2);
-padding-top: 15px;
-padding-bottom:10px;
-text-align: center;
-color: rgb(15, 15, 15);
+.jumbotron {
+  background-color: rgb(177, 14, 2);
+  padding-top: 15px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: rgb(15, 15, 15);
 }
-.col-md-7{
-background-color: rgb(11, 122, 219);
-color: white;
-text-align: right
+.background {
+  background-image: url("./image/depositphotos_9256292-stock-photo-sunny-sky-background.jpg");
 }
 
-.col-md-5{
-text-align: left;
+/* .bar {
+  background-color: #f44560;
+  color: #32a4a7;
+  border-color: #32a4a7;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+} */
+
+h2 {
+  font-size: 20px;
 }
 
-.hide {
-    display: none;
+#location-form {
+  margin-left: 15px;
 }
 
-.show {
-    display: block;
+.btn {
+  background-color: #f44560;
+  border-color: #f44560;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btn:hover {
+  background-color: #32a4a7;
+  border-color: #32a4a7;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btn:focus {
+  background-color: #32a4a7;
+  border-color: #32a4a7;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#label-text {
+  font-size: large;
+  font-weight: bold;
+  color: #32a4a7;
+}
+
+.results-boxes {
+  margin: 15px;
+  padding: 10px;
+  color: #32a4a7;
+}
+
+#five {
+  color: #32a4a7;
+}
+
+.forecast {
+  background-color: #1e7069;
+  margin: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: white;
+  line-height: 2;
+  box-shadow: 2px 2px 2px black;
+}
+
+.forecast-date {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.forecast-data {
+  font-size: 10px;
+}
+
+.forecast-date {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.city-name-style {
+  font-size: 36px;
 }
