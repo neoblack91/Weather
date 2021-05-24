@@ -5,11 +5,11 @@
   text-align: center;
   color: rgb(15, 15, 15);
 }
-.background {
+/* .background {
   background-image: url("./image/depositphotos_9256292-stock-photo-sunny-sky-background.jpg");
-}
+} */
 
-/* .bar {
+.bar {
   background-color: #f44560;
   color: #32a4a7;
   border-color: #32a4a7;
@@ -17,7 +17,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   margin: 0;
-} */
+}
 
 h2 {
   font-size: 20px;

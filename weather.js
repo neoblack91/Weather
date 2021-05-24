@@ -17,10 +17,26 @@ function UvIcon(lat, lon) {
 }
 //uv color
 function uvBackground(uvRes) {
-  $("#uv-index-results");
+  $("#uv-index-results").texr(uvRes);
   switch (true) {
+    case 1 < uvRes && uvRes < 2:
+      $("#uv-index-results").css("background-color", "green");
+      break;
+    case 3 < uvRes && uvRes < 5:
+      $("#uv-index-results").css("background-color", "yellow");
+      break;
+    case 6 < uvRes && uvRes < 7:
+      $("#uv-index-results").css("background-color", "orange");
+      break;
+    case 8 < uvRes && uvRes < 10:
+      $("#uv-index-results").css("background-color", "red");
+      break;
+    case 10 < uvRes:
+      $("#uv-index-results").css("background-color", "purple");
+      break;
   }
 }
+
 //get the forecast
 
 function getForecast(userInput) {
