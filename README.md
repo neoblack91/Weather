@@ -1,11 +1,11 @@
-# Good README Generator [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+# Weather Dashboard [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 # Neoblack91
 
 
 ## Description
 
-This is an assignment to help people generate readme documents better.
+This is an app to help you check the weather.
 
 ## Table of Contents
 
@@ -20,21 +20,21 @@ This is an assignment to help people generate readme documents better.
 
 ```
 
-First you open up the read me generator, then in the terminal you type "node.index.js", then you answer the questions that are given to you.
+Click on the app and type your city
 
 ```
 
 ### Usage
 
-To make README generators
+To check the weather
 
 ### License
 
- This project is licensed under an GNU GPL v3 license.
+ This project is licensed under an MIT license.
 
 ## Contributing
 
-I made this generator using javascript
+Javascript , CSS , Html
 
 ## Tests
 
